@@ -1,0 +1,14 @@
+{
+  "watch": [
+    "src",
+    "types",
+    "bin"
+  ],
+  "ext": ".ts,.js",
+  "ignore": [
+    "src/**/*.spec.ts",
+    "specs",
+    "test"
+  ],
+  "exec": "ts-node ./bin/www"
+}

@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "89611a1f-d9d4-4b8a-a0f3-d5ef0c870848",
+		"name": "Espa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Pet by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/pets/:id",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pets",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "61f9a470ad30f0259233ee75"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Pets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/pets",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Praline\",\n    \"type\": \"dog\",\n    \"birthday\": \"2022-01-01\",\n    \"archived\": false,\n    \"published\": true,\n    \"arrivalDate\": \"2022-01-20\",\n    \"situation\": \"En famillle d'accueil\",\n    \"gender\": \"female\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/pets",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
