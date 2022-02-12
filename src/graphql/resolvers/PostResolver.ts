@@ -17,6 +17,9 @@ interface IPostResponse {
 class PostResolverHandler {
   public getAll = HttpHandler.graphql(async () => {
     const { ok, error, data }: IPostsResponse = await postService();
+    if (!ok) {
+      throw new Error(error);
+    }
 
     return data;
   });
@@ -42,16 +45,15 @@ class PostResolverHandler {
   });
 
   public remove = HttpHandler.graphql(async (id) => {
-    console.log('dededee', id)
     const { ok, error, data }: IPostResponse = await postService(`/${id}`, { method: 'DELETE' })
 
     if (!ok) {
       throw new Error(error);
     }
 
-    return data
+    return data;
   })
-
-}
+    
+  
 
 export const PostResolver = () => new PostResolverHandler();
