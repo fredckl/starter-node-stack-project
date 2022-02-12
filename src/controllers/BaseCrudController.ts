@@ -1,5 +1,4 @@
 import { Request } from "express";
-import { Document } from "mongoose";
 import { omit } from "ramda";
 
 export class BaseCrudController {
@@ -32,10 +31,11 @@ export class BaseCrudController {
 
   public remove = async (req: Request) => {
     const { id } = req.params;
+    const data = await this.Model.findOne({ _id: id }).lean();
     const { deletedCount } = await this.Model.deleteOne({ _id: id });
     if (deletedCount === 0) {
       throw new Error(`No deleted one with ID: ${id}`);
     }
-    return true;
+    return data;
   };
 }

@@ -4,9 +4,10 @@
  * Module dependencies.
  */
 require('dotenv').config();
-const { app } = require('../src/server');
+const { app, init } = require('../src/server');
 const debug = require('debug')('espa-proxy:server');
 const http = require('http');
+const { startApolloServer } = require('../src/graphql');
 
 /**
  * Get port from environment and store in Express.
@@ -19,15 +20,21 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+const start = async () => {
+  const server = http.createServer(app);
+  await startApolloServer(server, app);
+  init();
+  /**
+   * Listen on provided port, on all network interfaces.
+   */
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening(server));
+};
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+start();
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -81,10 +88,12 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
-  const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+function onListening(server) {
+  return () => {
+    const addr = server.address();
+    const bind = typeof addr === 'string'
+      ? 'pipe ' + addr
+      : 'port ' + addr.port;
+    debug('Listening on ' + bind);
+  };
 }
