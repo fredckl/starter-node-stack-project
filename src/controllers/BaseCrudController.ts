@@ -3,9 +3,9 @@ import { omit } from "ramda";
 
 export class BaseCrudController {
   protected Model: any = null;
-  protected excluedEditFields: string[] = ['_id', 'id', 'createdAt', 'updatedAt'];
+  protected excludedEditFields: string[] = ['_id', 'id', 'createdAt', 'updatedAt'];
 
-  private getExcluedEditFields = omit(this.excluedEditFields);
+  private getExcludedEditFields = omit(this.excludedEditFields);
 
   public getAll = () => {
     return this.Model.find({}).lean();
@@ -17,14 +17,14 @@ export class BaseCrudController {
   }
 
   public create = async (req: Request) => {
-    const data = this.getExcluedEditFields(req.body);
+    const data = this.getExcludedEditFields(req.body);
     const res = await this.Model.create(data);
     return this.Model.findOne({ _id: res.get('_id') }).lean();
   }
 
   public update = async (req: Request) => {
     const { id } = req.params;
-    const data = this.getExcluedEditFields(req.body);
+    const data = this.getExcludedEditFields(req.body);
     await this.Model.updateOne({ _id: id }, { $set: data });
     return this.Model.findOne({ _id: id }).lean();
   }
