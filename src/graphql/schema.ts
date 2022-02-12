@@ -7,8 +7,8 @@ const paths = [
   '/input'
 ];
 
-const typeDefs = (_schemaTypes: any) => {
-  return R.map(R.prop('typeDefs'))(_schemaTypes);
+const typeDefs = (schemas: any) => {
+  return R.map(R.prop('typeDefs'))(schemas);
 };
 
 // @ts-ignore

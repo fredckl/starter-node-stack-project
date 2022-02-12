@@ -53,7 +53,16 @@ class PostResolverHandler {
 
     return data;
   })
-    
-  
+
+  public getById = HttpHandler.graphql(async (id) => {
+    const { ok, error, data }: IPostResponse = await postService(`/${id}`)
+
+    if (!ok) {
+      throw new Error(error);
+    }
+
+    return data;
+  })
+}
 
 export const PostResolver = () => new PostResolverHandler();
