@@ -1,4 +1,4 @@
-import { stringOrNullType } from "./simpleTypes";
+import {stringOrNullType} from './simpleTypes';
 
 export type RestResponseType = {
   ok: boolean

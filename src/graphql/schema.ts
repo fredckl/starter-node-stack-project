@@ -1,32 +1,32 @@
 import * as R from 'ramda';
 import fs from 'fs';
-import { makeExecutableSchema } from '@graphql-tools/schema';
+import {makeExecutableSchema} from '@graphql-tools/schema';
 
 const paths = [
-  '/type',
-  '/input'
+	'/type',
+	'/input'
 ];
 
 const typeDefs = (schemas: any) => {
-  return R.map(R.prop('typeDefs'))(schemas);
+	return R.map(R.prop('typeDefs'))(schemas);
 };
 
 // @ts-ignore
 const resolvers = R.compose(
-  R.mergeAll,
-  R.reject(R.isNil),
-  R.map(R.prop('resolvers'))
-)
+	R.mergeAll,
+	R.reject(R.isNil),
+	R.map(R.prop('resolvers'))
+);
 
 const schemaTypes = R.reduce((acc: any, dir: string) => {
-  const fullDirectory = `${__dirname}${dir}`;
-  const files = fs.readdirSync(fullDirectory);
-  return [...acc, ...R.map(file => require(`${fullDirectory}/${file}`))(files)]
-}, [])(paths)
+	const fullDirectory = `${__dirname}${dir}`;
+	const files = fs.readdirSync(fullDirectory);
+	return [...acc, ...R.map(file => require(`${fullDirectory}/${file}`))(files)];
+}, [])(paths);
 
 export default makeExecutableSchema({
-  // @ts-ignore
-  typeDefs: typeDefs(schemaTypes),
-  // @ts-ignore
-  resolvers: resolvers(schemaTypes)
-})
+	// @ts-ignore
+	typeDefs: typeDefs(schemaTypes),
+	// @ts-ignore
+	resolvers: resolvers(schemaTypes)
+});

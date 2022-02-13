@@ -1,8 +1,8 @@
-import { Post } from "../db/models";
-import { BaseCrudController } from "./BaseCrudController";
+import {Post} from '../db/models';
+import {BaseCrudController} from './BaseCrudController';
 
 class PostController extends BaseCrudController {
-  Model = Post
+	Model = Post;
 }
 
 export const postCtrl = new PostController();

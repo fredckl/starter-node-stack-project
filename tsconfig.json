@@ -94,6 +94,7 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "./.eslintrc.js"
+    "./.eslintrc.yml",
+    "./vite.config.js"
   ]
 }

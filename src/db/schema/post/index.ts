@@ -5,7 +5,7 @@ export interface IPost extends Document {
 }
 
 export const postSchema = new mongoose.Schema<IPost>({
-  title: { type: String, required: true }
+	title: {type: String, required: true}
 }, {
-  timestamps: true
+	timestamps: true
 });
