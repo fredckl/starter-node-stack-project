@@ -1,0 +1,42 @@
+# source: http://localhost:4000/graphql
+# timestamp: Mon Feb 14 2022 08:20:52 GMT+0100 (heure normale d’Europe centrale)
+
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+type Mutation {
+  createPost(input: PostInput!): PostResult
+  updatePost(input: PostInput!, id: ID!): PostResult
+  removePost(id: ID!): PostResult
+}
+
+type Post {
+  id: ID!
+  title: String
+  createdAt: String
+  updatedAt: String
+}
+
+input PostInput {
+  title: String
+}
+
+type PostResult {
+  ok: Boolean
+  error: String
+  data: Post
+}
+
+type PostsResult {
+  ok: Boolean
+  error: String
+  data: [Post]
+}
+
+type Query {
+  posts: PostsResult
+  getByIdPost(id: ID!): PostResult
+}
