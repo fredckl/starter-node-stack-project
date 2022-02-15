@@ -1,5 +1,5 @@
-import {gql} from 'apollo-server-core';
-import {PostResolver} from '../resolvers/PostResolver';
+import { gql } from 'apollo-server-core';
+import { PostResolver } from '../resolvers/PostResolver';
 
 export const typeDefs = gql`
 
@@ -20,14 +20,14 @@ export const typeDefs = gql`
 `;
 
 export const resolvers = {
-	Query: {
-		posts: () => PostResolver().getAll(),
-		getByIdPost: (parent: any, {id}: any) => PostResolver().getById(id)
-	},
+  Query: {
+    posts: () => PostResolver().getAll(),
+    getByIdPost: (parent: any, { id }: any) => PostResolver().getById(id)
+  },
 
-	Mutation: {
-		createPost: (parent: any, {input}: any) => PostResolver().create(input),
-		updatePost: (parent: any, {id, input}: any) => PostResolver().update({id, input}),
-		removePost: (parent: any, {id}: any) => PostResolver().remove(id),
-	}
+  Mutation: {
+    createPost: (parent: any, { input }: any) => PostResolver().create(input),
+    updatePost: (parent: any, { id, input }: any) => PostResolver().update({ id, input }),
+    removePost: (parent: any, { id }: any) => PostResolver().remove(id),
+  }
 };

@@ -1,29 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Routes from './Routes';
 
-function App() {
-	const [count, setCount] = useState(0);
-
-	return (
-		<div className="App">
-			<header className="App-header">
-				<p>Hello Vite + React!</p>
-				<p>
-					<button onClick={() => setCount(count => count + 1)}>count is: {count}</button>
-				</p>
-				<p>
-                    Edit <code>App.jsx</code> and save to test HMR updates.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-                    Learn React
-				</a>
-			</header>
-		</div>
-	);
-}
+const App = () => {
+  return (
+    <div className="App">
+      <Routes>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/posts">Posts</Link>
+            </li>
+          </ul>
+        </nav>
+      </Routes>
+    </div>
+  );
+};
 
 export default App;

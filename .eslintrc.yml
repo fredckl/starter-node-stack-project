@@ -19,7 +19,7 @@ plugins:
 rules:
   indent:
     - error
-    - tab
+    - 2
   linebreak-style:
     - error
     - unix
@@ -34,3 +34,7 @@ rules:
   '@typescript-eslint/no-explicit-any': off
   '@typescript-eslint/explicit-module-boundary-types': off
   no-mixed-spaces-and-tabs: off
+  react/prop-types:
+    - 1
+    - ignore:
+      - 'children'
