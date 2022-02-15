@@ -1,23 +1,23 @@
+import { Button, Container } from '@chakra-ui/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Routes from './Routes';
 
 const App = () => {
   return (
-    <div className="App">
+    <Container>
       <Routes>
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/posts">Posts</Link>
-            </li>
-          </ul>
+          <Link to="/">
+            <Button m={2}>Home</Button>
+          </Link>
+          <Link to="/posts">
+            <Button m={2}>Posts</Button>
+          </Link>
+
         </nav>
       </Routes>
-    </div>
+    </Container>
   );
 };
 

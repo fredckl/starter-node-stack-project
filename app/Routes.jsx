@@ -11,15 +11,12 @@ const Routes = ({children}) => {
   return (
     <Router>
       {children}
-
       <React.Suspense fallback={'Loading...'}>
         <Switch>
           <Route path="/" element={<Home />}/>
           <Route path="/posts" element={<Posts />}/>
-
         </Switch>
       </React.Suspense>
-
     </Router>
   );
 };
