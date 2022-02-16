@@ -30,7 +30,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: path.resolve(__dirname, 'front'),
+    outDir: path.resolve(__dirname, 'dist', 'front'),
     sourcemap: true,
   }
 });

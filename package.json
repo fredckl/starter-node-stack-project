@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "server:dev": "DEBUG=post-starter:* && nodemon",
-    "server:build": "DEBUG=post-starter:* && tsc && cp -r bin dist_backend",
-    "start:prod": "DEBUG=post-starter:* && node ./dist_backend/bin/www",
+    "server:build": "DEBUG=post-starter:* && tsc && cp -r bin dist",
+    "server:prod": "DEBUG=post-starter:* && node ./dist/bin/www",
     "front:dev": "vite",
     "front:build": "export NODE_ENV=production && vite build",
     "getSchema": "graphql get-schema -e dev",

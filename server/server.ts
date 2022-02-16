@@ -7,6 +7,8 @@ import cors from 'cors';
 import path from 'path';
 const { createServer: createViteServer } = require('vite');
 
+const distFrontPath = path.resolve(process.cwd(), 'dist', 'front');
+
 export const app = express();
 export const init = async () => {
   app.set('x-powered-by', false);
@@ -16,7 +18,7 @@ export const init = async () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use(express.static('front'));
+  app.use(express.static(distFrontPath));
 
   const vite = await createViteServer({
     server: { middlewareMode: 'ssr' }
@@ -27,7 +29,7 @@ export const init = async () => {
   app.use('/', indexRouter);
 
   app.use('*', async (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, '..', 'front', 'index.html'));
+    res.sendFile(path.join(distFrontPath, 'index.html'));
   });
 
 
