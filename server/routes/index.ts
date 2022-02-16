@@ -5,6 +5,4 @@ const router = Router();
 
 router.use('/api/v1/', apiViRouter);
 
-// router.use('/', homepage);
-
 export default router;
