@@ -1,8 +1,8 @@
-import PostForm from '@/components/posts/PostForm';
-import PostsList from '@/components/posts/PostsList';
 import { Button } from '@chakra-ui/react';
 import React from 'react';
 import { usePosts } from './usePosts';
+import PostForm from '../../components/posts/PostForm';
+import PostsList from '../../components/posts/PostsList';
 
 const Posts = () => {
   const {

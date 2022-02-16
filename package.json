@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "server:dev": "DEBUG=post-starter:* && nodemon",
-    "build": "DEBUG=post-starter:* && tsc && cp -r bin dist",
-    "start:prod": "DEBUG=post-starter:* && node ./dist/bin/www",
+    "server:build": "DEBUG=post-starter:* && tsc && cp -r bin dist_backend",
+    "start:prod": "DEBUG=post-starter:* && node ./dist_backend/bin/www",
     "front:dev": "vite",
-    "front:build": "vite build",
+    "front:build": "export NODE_ENV=production && vite build",
     "getSchema": "graphql get-schema -e dev",
     "relay": "yarn run relay-compiler $@"
   },
@@ -47,7 +47,8 @@
     "@types/ramda": "^0.27.64",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
-    "@vitejs/plugin-react": "^1.2.0",
+    "@vitejs/plugin-legacy": "^1.7.1",
+    "@vitejs/plugin-react": "^1.0.7",
     "babel-plugin-relay": "^13.1.1",
     "eslint": "^8.8.0",
     "eslint-config-standard": "^16.0.3",

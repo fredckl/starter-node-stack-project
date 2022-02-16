@@ -1,12 +1,12 @@
 {
   "watch": [
-    "src",
+    "server",
     "types",
     "bin"
   ],
   "ext": ".ts,.js",
   "ignore": [
-    "src/**/*.spec.ts",
+    "server/**/*.spec.ts",
     "specs",
     "test"
   ],

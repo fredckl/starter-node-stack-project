@@ -4,10 +4,10 @@
  * Module dependencies.
  */
 require('dotenv').config();
-const { app, init } = require('../src/server');
+const { app, init } = require('../server/server');
 const debug = require('debug')('node-stack:server');
 const http = require('http');
-const { startApolloServer } = require('../src/graphql');
+const { startApolloServer } = require('../server/graphql');
 
 /**
  * Get port from environment and store in Express.
