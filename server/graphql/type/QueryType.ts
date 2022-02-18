@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-core';
+import { gql } from 'apollo-server-express';
 import { PostResolver } from '../resolvers/PostResolver';
 
 export const typeDefs = gql`
